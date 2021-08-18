@@ -1,0 +1,8 @@
+$script = <<SCRIPT
+sudo apt-get update && sudo apt-get install -y python3 python3-pip python3-psycopg2 && pip3 install Django
+SCRIPT
+Vagrant.configure("2") do |config|
+  config.vm.box = "bento/ubuntu-18.04"
+  config.vm.provision "shell", inline: $script
+  config.vm.provision "file", source: "D:\\VM\\VagrantVM2\\test.txt", destination: "/home/vagrant/test.txt"
+end
